@@ -105,6 +105,16 @@ describe Person do
         expect(john.wife).to eq lily.becomes(Wife)
       end
     end
+
+    describe '#friends' do
+      let!(:john)        { create(:person, first_name: 'John') }
+      let!(:jack)        { create(:person, first_name: 'Jack') }
+      let!(:friendships)  { create(:friendships, person: john, member: jack) }
+
+      it 'returns friends' do
+        expect(john.friends).to include jack.becomes(Friend)
+      end
+    end
   end
 
   describe '#father_of?' do
