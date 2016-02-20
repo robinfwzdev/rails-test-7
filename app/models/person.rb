@@ -17,6 +17,7 @@ class Person < ActiveRecord::Base
   has_many  :childrenships, -> { where(type: [Fathership, Mothership]) }, class_name: Relationship, foreign_key: :member_id
   has_many  :friendships, dependent: :destroy
   has_many  :friends, class_name: Friend,  through: :friendships, source: :member
+  has_many  :friends_of_friends_ships, through: :friends, source: :friendships
 
   has_many  :parents,   class_name: Parent,   through: :parentships,    source: :member
   has_many  :sons,      class_name: Son,      through: :childrenships,  source: :person
