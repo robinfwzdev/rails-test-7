@@ -30,3 +30,6 @@ end
 [mina, mason, jason].each do |person|
   Friendship.create(person: jack, member: person)
 end
+
+Fathership.create(person: sofia, member: john)
+Mothership.create(person: sofia, member: mina)
