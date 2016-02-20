@@ -24,6 +24,7 @@ describe Person do
     it { is_expected.to have_many :childrenships }
     it { is_expected.to have_many :friendships }
     it { is_expected.to have_many :friends_of_friends_ships }
+    it { is_expected.to have_many :friends_of_friends }
 
     it { is_expected.to have_many :parents }
     it { is_expected.to have_many :children }
