@@ -11,7 +11,7 @@ class Relationship < ActiveRecord::Base
 
   validate :ensure_valid_age
 
-  enumerize :type, in: [:Fathership, :Mothership, :Wifeship, :Husbandship], predicates: true
+  enumerize :type, in: [:Fathership, :Mothership, :Wifeship, :Husbandship, :Friendship], predicates: true
 
   private
 
