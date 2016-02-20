@@ -12,6 +12,7 @@ describe Person do
   context 'associations' do
     it { is_expected.to have_one :fathership }
     it { is_expected.to have_one :mothership }
+    it { is_expected.to have_one :wifeship }
 
     it { is_expected.to have_one :father }
     it { is_expected.to have_one :mother }

@@ -4,7 +4,7 @@ class Person < ActiveRecord::Base
 
   has_one   :fathership,  dependent: :destroy
   has_one   :mothership,  dependent: :destroy
-  has_one   :relationship
+  has_one   :wifeship,    dependent: :destroy
 
   has_one   :father,    class_name: Father,   through: :fathership,  source: :member
   has_one   :mother,    class_name: Mother,   through: :mothership,  source: :member
