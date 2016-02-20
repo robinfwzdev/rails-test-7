@@ -15,6 +15,7 @@ class Person < ActiveRecord::Base
   has_many  :relationships
   has_many  :parentships, dependent: :destroy
   has_many  :childrenships, -> { where(type: [Fathership, Mothership]) }, class_name: Relationship, foreign_key: :member_id  
+  has_many  :motherships, -> { where(type: [Wifeship]) }, class_name: Relationship, foreign_key: :member_id
 
   has_many  :parents,   class_name: Parent,   through: :parentships,    source: :member
   has_many  :sons,      class_name: Son,      through: :childrenships,  source: :person
@@ -26,6 +27,7 @@ class Person < ActiveRecord::Base
   has_many  :friends_of_friends_ships, -> (object) { where.not(member_id: object.id) }, through: :friends, source: :friendships
   has_many  :friends_of_friends,  -> (object) { where.not(id: object.friends.ids) }, class_name: Friend, through: :friends_of_friends_ships, source: :member
   has_many  :mutual_friends,      -> (object) { where(id: object.friends.ids) }, class_name: Friend, through: :friends_of_friends_ships, source: :member
+  has_many   :mother_in_law, through: :father, source: :member
 
   validates :first_name, presence: true
   validates :last_name,  presence: true
