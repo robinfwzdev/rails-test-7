@@ -23,7 +23,7 @@ class Person < ActiveRecord::Base
   has_many  :brothers,            -> (object) { where.not(id: object.id).uniq }, class_name: Brother,        source: :sons,    through: :parents
   has_many  :friendships, dependent: :destroy
   has_many  :friends, class_name: Friend,  through: :friendships, source: :member
-  has_many  :friends_of_friends_ships, through: :friends, source: :friendships
+  has_many  :friends_of_friends_ships, -> (object) { where.not(member_id: object.id) }, through: :friends, source: :friendships
   has_many  :friends_of_friends,  -> (object) { where.not(id: object.friends.ids) }, class_name: Friend, through: :friends_of_friends_ships, source: :member
   has_many  :mutual_friends,      -> (object) { where(id: object.friends.ids) }, class_name: Friend, through: :friends_of_friends_ships, source: :member
 
