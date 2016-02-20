@@ -14,6 +14,7 @@ describe Person do
     it { is_expected.to have_one :mothership }
     it { is_expected.to have_one :wifeship }
     it { is_expected.to have_one :husbandship }
+    it { is_expected.to have_one :friendship }
 
     it { is_expected.to have_one :father }
     it { is_expected.to have_one :mother }
