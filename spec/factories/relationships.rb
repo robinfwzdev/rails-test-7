@@ -4,7 +4,11 @@ FactoryGirl.define do
     association :member, factory: :person
   end
 
-  factory :fathership,  parent: :relationship, class: Fathership
+  factory :fathership,   parent: :relationship, class: Fathership
 
-  factory :mothership,  parent: :relationship, class: Mothership
+  factory :mothership,   parent: :relationship, class: Mothership
+
+  factory :husbandship,  parent: :relationship, class: Husbandship
+
+  factory :wifeship,     parent: :relationship, class: Wifeship
 end
