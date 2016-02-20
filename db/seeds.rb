@@ -22,3 +22,11 @@ end
 
 Wifeship.create(person: john, member: lily)
 Husbandship.create(person: lily, member: john)
+
+[jack, jason].each do |person|
+  Friendship.create(person: john, member: person)
+end
+
+[mina, mason, jason].each do |person|
+  Friendship.create(person: jack, member: person)
+end
