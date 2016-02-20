@@ -88,11 +88,12 @@ describe Person do
 
     describe '#husband' do
       let!(:john)        { create(:male, first_name: 'John') }
-      let!(:lily)        { create(:male, first_name: 'Lily') }
+      let!(:lily)        { create(:female, first_name: 'Lily') }
       let!(:husbandship) { create(:husbandship, person: lily, member: john) }
 
       it 'returns husband' do
-        expect(lily.husband).to match john.becomes(Husband)
+        expect(lily.husband).to eq john.becomes(Husband)
+      end
       end
     end
   end
