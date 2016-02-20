@@ -1,0 +1,3 @@
+class Husbandship < Relationship
+  
+end
