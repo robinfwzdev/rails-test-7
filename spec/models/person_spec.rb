@@ -94,6 +94,15 @@ describe Person do
       it 'returns husband' do
         expect(lily.husband).to eq john.becomes(Husband)
       end
+    end
+
+    describe '#wife' do
+      let!(:john)        { create(:male, first_name: 'John') }
+      let!(:lily)        { create(:female, first_name: 'Lily') }
+      let!(:wifeship)    { create(:wifeship, person: john, member: lily) }
+
+      it 'returns wife' do
+        expect(john.wife).to eq lily.becomes(Wife)
       end
     end
   end
