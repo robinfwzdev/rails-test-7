@@ -6,7 +6,6 @@ class Person < ActiveRecord::Base
   has_one   :mothership,  dependent: :destroy
   has_one   :wifeship,    dependent: :destroy
   has_one   :husbandship, dependent: :destroy
-  has_one   :friendship,  dependent: :destroy
 
   has_one   :father,    class_name: Father,   through: :fathership,  source: :member
   has_one   :mother,    class_name: Mother,   through: :mothership,  source: :member
@@ -16,6 +15,7 @@ class Person < ActiveRecord::Base
   has_many  :relationships
   has_many  :parentships, dependent: :destroy
   has_many  :childrenships, -> { where(type: [Fathership, Mothership]) }, class_name: Relationship, foreign_key: :member_id
+  has_many  :friendships
 
   has_many  :parents,   class_name: Parent,   through: :parentships,    source: :member
   has_many  :sons,      class_name: Son,      through: :childrenships,  source: :person
