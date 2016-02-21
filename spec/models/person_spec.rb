@@ -115,6 +115,18 @@ describe Person do
         expect(john.friends).to include jack.becomes(Friend)
       end
     end
+
+    describe '#friends_of_friends' do
+      let!(:john)        { create(:person, first_name: 'John') }
+      let!(:jack)        { create(:person, first_name: 'Jack') }
+      let!(:mason)       { create(:person, first_name: 'Mason') }
+      let!(:john_friendships_jack)   { create(:friendships, person: john, member: jack) }
+      let!(:jack_friendships_mason)  { create(:friendships, person: jack, member: mason) }
+
+      it 'returns friends_of_friends' do
+        expect(john.friends_of_friends).to include mason.becomes(Friend)
+      end
+    end
   end
 
   describe '#father_of?' do
