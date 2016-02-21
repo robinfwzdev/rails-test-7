@@ -181,4 +181,16 @@ describe Person do
       end
     end
   end
+
+  describe '#mutual_friends' do
+    let!(:john)   { create(:person, first_name: 'John') }
+    let!(:jack)   { create(:person, first_name: 'Jack') }
+    let!(:mason)  { create(:person, first_name: 'Mason') }
+    let!(:john_friendships_mason) { create(:friendships, person: john, member: mason) }
+    let!(:jack_friendships_mason) { create(:friendships, person: jack, member: mason) }
+
+    it 'returns mutual_friends' do
+      expect(john.mutual_friends(jack)).to include mason.becomes(Friend)
+    end
+  end
 end
