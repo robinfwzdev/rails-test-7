@@ -57,6 +57,10 @@ class Person < ActiveRecord::Base
     friends & person.friends
   end
 
+  def mother_in_law
+    father.wife if father.present?
+  end
+
   private
 
   def set_name

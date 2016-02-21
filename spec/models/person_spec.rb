@@ -193,4 +193,18 @@ describe Person do
       expect(john.mutual_friends(jack)).to include mason.becomes(Friend)
     end
   end
+
+  describe '#mother_in_law' do
+    let!(:john)   { create(:male, first_name: 'John')    }
+    let!(:lily)   { create(:female, first_name: 'Lily')  }
+    let!(:mina)   { create(:female, first_name: 'Mina')  }
+    let!(:sofia)  { create(:female, first_name: 'Sofia') }
+    let!(:wifeship)    { create(:wifeship, person: john, member: lily) }
+    let!(:fathership)  { create(:fathership, person: sofia, member: john) }
+    let!(:mothership)  { create(:mothership, person: sofia, member: mina) }
+
+    it 'returns mother_in_law' do
+      expect(sofia.mother_in_law.id).to eq lily.id
+    end
+  end
 end
