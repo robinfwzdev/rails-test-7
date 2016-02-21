@@ -4,7 +4,7 @@ describe Relationship do
   context 'validations' do
     it { is_expected.to validate_presence_of :person_id }
     it { is_expected.to validate_presence_of :member_id }
-    it { is_expected.to enumerize(:type).in(:Fathership, :Mothership) }
+    it { is_expected.to enumerize(:type).in(:Fathership, :Mothership, :Wifeship, :Husbandship, :Friendship) }
 
     describe 'uniqueness of father, mother' do
       let!(:alex)      { create(:male, first_name: 'Alex') }
